@@ -33,61 +33,44 @@ dns:
     - 112.215.203.254
 proxies:
   - name: AKUN1
-    server: quiz.int.vidio.com
+    server: sg-1.hidexray.xyz
     port: 80
     type: vmess
-    uuid: 396415b0-6f7d-4df3-9d50-1a3ff9115b1a
+    uuid: e00a4b906eea435486311ef5b6e0102a
     alterId: 0
     cipher: auto
-    tls: false
+    tls: true
     skip-cert-verify: true
-    servername: id2-ray.ipservers.xyz
+    servername: live.iflix.com
     network: ws
     ws-opts:
-      path: /JAGOANSSH/
+      path: /vless
       headers:
-        Host: id2-ray.ipservers.xyz
+        Host: live.iflix.com
     udp: true
   - name: AKUN2
-    server: quiz.int.vidio.com
+    server: biznet-1.hidexray.xyz
     port: 443
     type: vless
-    uuid: 9cf9a9b0-2e2e-45bd-ac6f-5eaa44e30cfe
+    uuid: 5ee39320087246a59ef109f84f0f3f62
     cipher: auto
     tls: true
     skip-cert-verify: true
-    servername: id1vless.ipservers.xyz
+    servername: live.iflix.com
     network: ws
     ws-opts:
-      path: /jagoanssh
+      path: /vless
       headers:
-        Host: id1vless.ipservers.xyz
+        Host: live.iflix.com
     udp: true
-  - name: AKUN3
-    server: quiz.int.vidio.com
-    port: 443
-    type: vless
-    uuid: aae98731-898a-4cd3-8c7f-d09af2387d63
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: id2vless.ipservers.xyz
-    network: ws
-    ws-opts:
-      path: /jagoanssh
-      headers:
-        Host: id2vless.ipservers.xyz
-    udp: true
-
+  
 proxy-groups:
   - name: ID-X
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
-      - AKUN1
       - AKUN2
-      - AKUN3
 
   - name: MIX-X
     type: fallback
@@ -96,7 +79,6 @@ proxy-groups:
     proxies:
       - AKUN1
       - AKUN2
-      - AKUN3
       
   - name: IKLAN
     type: select
@@ -107,7 +89,7 @@ proxy-groups:
   - name: GAME
     type: select
     proxies:
-     - ID-X
+     - MIX-X
      - DIRECT
      - REJECT
 
@@ -167,3 +149,4 @@ rule-providers:
     type: file
     behavior: domain
     path: ./block.yaml  
+
