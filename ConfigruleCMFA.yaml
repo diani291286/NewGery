@@ -34,7 +34,7 @@ dns:
 proxies:
   - name: AKUN1
     server: sg-1.hidexray.xyz
-    port: 80
+    port: 443
     type: vless
     uuid: e00a4b906eea435486311ef5b6e0102a
     alterId: 0
@@ -149,5 +149,6 @@ rule-providers:
     type: file
     behavior: domain
     path: ./block.yaml  
+
 
 
